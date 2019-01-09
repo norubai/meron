@@ -1,0 +1,17 @@
+.indexingMessage {
+    text-align: center;
+}
+
+.doughnut-center {
+    text-align: center;
+    margin-top: -240px;
+    font-size: 2.5em;
+}
+
+.doughnut-center p {
+    margin: 0;
+}
+
+.indexingMessage + canvas {
+    margin: 0 auto;
+}

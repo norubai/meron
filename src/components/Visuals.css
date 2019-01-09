@@ -1,0 +1,48 @@
+.pan {
+    margin: 5px;
+    padding: 30px;
+}
+
+.widgets-container {
+    width: 100%;
+}
+
+.graph-container {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.our-button-group {
+    width: 100%;
+}
+
+.our-button {
+    transition:  all 0.4s !important;
+}
+
+.our-button:hover {
+    background: rgb(136, 130, 130) !important;
+}
+
+.ui.button.toggle.active.our-button {
+    background: rgb(255,99,132) !important;
+    color: white !important;
+}
+
+#heatmap{
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+    animation-duration: 2s;
+    display:none;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

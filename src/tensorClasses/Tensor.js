@@ -38,7 +38,6 @@ class Tensor {
     initializeTensors(headers) {
         var channelTensors = {}
         var size = this.size;
-console.log('Tensor::initializeTensors headers', headers);
         headers.forEach(header => channelTensors[header] = Array(size).fill(0));
         return channelTensors;
     }
@@ -160,10 +159,6 @@ console.log('Tensor::initializeTensors headers', headers);
         // Build the resulting vectors.
         let resAggrt = Array(I).fill(0);
         let resCount = Array(I).fill(0);
-console.log('Tensor::_projectTo1Dim');
-console.log('\tdataAggrt', dataAggrt);
-console.log('\tresAggrt', resAggrt);
-console.log('\tresCount', resCount);
 
         // Project every linear index to corresponding res index. Then keep track of sums and counts.
         for (var linearIndex = 0, size = this.size; linearIndex < size; ++linearIndex) {
@@ -180,7 +175,7 @@ console.log('\tresCount', resCount);
             if (resCount[i])
                 resAggrt[i] /= resCount[i]; 
         }
-console.log('Tensor::_projectTo1Dim -- resAggrt', resAggrt);
+
         return resAggrt;
     }
 
@@ -212,7 +207,7 @@ console.log('Tensor::_projectTo1Dim -- resAggrt', resAggrt);
                     resAggrt[i][j] /= resCount[i][j];
             }
         }
-console.log('Tensor::_projectTo2Dim -- resAggrt', resAggrt);
+
         return resAggrt;
     }
 

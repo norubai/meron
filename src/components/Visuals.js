@@ -64,7 +64,6 @@ class Visuals extends Component {
                     csvHeaders,
                     this.props.selectedFilters
                 );
-                this.tensor.getStatus();
                 this.setState({ loading: false });
             }
         });
@@ -87,10 +86,6 @@ class Visuals extends Component {
         if (trueButtonsNew.length === 0) return;
 
         let [trueButtonIndex0, trueButtonIndex1] = trueButtonsNew;
-        console.log('Visuals::projectionHandler');
-        console.log('\this.timeDimensionLabels', this.timeDimensionLabels);
-        console.log('\trueButtonsNew', trueButtonsNew);
-        console.log('\tcocuklar:', trueButtonIndex0, trueButtonIndex1);
         // if one button is active --> graph is a bar chart. set yLabes = null. xLabels = LABEL_DICT[trueButton[0]].
         if (trueButtonsNew.length === 1) {
             graphDataNew = this.tensor.project(trueButtonsNew, this.state.selectedChannel);
@@ -104,8 +99,7 @@ class Visuals extends Component {
             yLabels = LABEL_DICT[this.timeDimensionLabels[trueButtonIndex0]];
 
         }
-        console.log('\txLabels', xLabels)
-        console.log('\tyLabels', yLabels)
+
         this.setState({ xLabels: xLabels, yLabels: yLabels, graphData: graphData, graphDataNew: graphDataNew });
     }
 

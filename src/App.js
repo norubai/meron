@@ -73,7 +73,7 @@ class App extends Component {
     addFilter (filter) {
       const { filters } = this.state;
       const newFilters = [ ...filters, filter ];
-      this.setState({ filters: newFilters }, () => { console.log(this.state.filters )})
+      this.setState({ filters: newFilters })
     }
 
     render() {

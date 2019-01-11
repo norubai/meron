@@ -47,7 +47,6 @@ class Graph extends Component {
 				xAxes: [{ticks: {
 					callback: function(value, index, values) {
 						if (xLabels[index] == '') return undefined;
-						console.log('VALUEEEE', value);
 						return value
 					},
 					autoSkip: false
@@ -72,11 +71,8 @@ class Graph extends Component {
 		else {
 			let height = (GRAPH_HEIGHT-35) / this.props.yLabels.length;
 			let xLabelVisibility = Array(xLabels.length).fill(true);
-			if  (xLabels.length === 365) {
-				console.log('GIRDIK###########');
+			if  (xLabels.length === 365)
 				xLabelVisibility = xLabelVisibility.map((_, i) => xLabels[i] != '');
-				console.log(xLabelVisibility);
-			}
 
 			return(
 					<HeatMap

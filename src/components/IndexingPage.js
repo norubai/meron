@@ -108,13 +108,11 @@ class IndexingPage extends Component {
     handleOperator (event, data) {
       const { filter } = this.state;
       filter.operator = data.value;
-      console.log(filter)
       this.setState({ filter, addFilterActive: filter.column && filter.value && filter.value.length > 0 })
     }
 
     handleFilterValue (event, data) {
       const { filter } = this.state;
-      console.log(filter);
       filter.value = data.value;
       this.setState({ filter, addFilterActive: filter.operator && filter.column && filter.value.length > 0 });
     }

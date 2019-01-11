@@ -6,12 +6,15 @@ class Navbar extends Component {
     constructor(props) {
         super(props);
         this.state = {};
+
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick = (e, { name }) => this.setState({ activeItem: name })
+    handleClick(e, { name }) { this.props.navbarClicked(name); }
+
 
     render() {
-        const { activeItem } = this.state
+        const { selectedNavbarItem }  = this.props;
 
         return (
             <Menu inverted>
@@ -19,15 +22,17 @@ class Navbar extends Component {
                     <img src='https://react.semantic-ui.com/logo.png' alt={'Failed to load resource'} />
                 </Menu.Item>
 
-                <Menu.Item name='upload' active={activeItem === 'upload'} onClick={this.handleClick}>
-                    <Link to='/upload'><Icon name='file alternate' />Upload File</Link>
+                <Menu.Item name='upload' active={selectedNavbarItem === 'upload'} onClick={this.handleClick}>
+                    {/* <Link to='/upload'><Icon name='file alternate' />Upload File</Link> */}
+                    <Icon name='file alternate' />Upload File
                 </Menu.Item>
 
-                <Menu.Item name='indexing' active={activeItem === 'indexing'} onClick={this.handleClick}>
-                    <Link to='/indexing'><Icon name='chart area' />Create Index</Link>
+                <Menu.Item name='indexing' active={selectedNavbarItem === 'indexing'} onClick={this.handleClick}>
+                    {/* <Link to='/indexing'><Icon name='chart area' />Create Index</Link> */}
+                    <Icon name='chart area' />Create Index
                 </Menu.Item>
 
-                <Menu.Item name='view' active={activeItem === 'view'} onClick={this.handleClick}>
+                <Menu.Item name='view' active={selectedNavbarItem === 'view'} onClick={this.handleClick}>
                     <Icon name='eye' />View
                 </Menu.Item>
             </Menu>

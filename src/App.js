@@ -14,17 +14,43 @@ class App extends Component {
         this.selectedFile = null;
         this.selectedTimeDimensions = null;
 
+        this.state = {
+            // filter = {value: number, operator: string, column: string}
+            filters: [],
+            selectedFile: null,
+            selectedTimeDimensions: null,
+            selectedNavbarItem: null
+        }
+
         this.fileHandler = this.fileHandler.bind(this);
         this.indexHandler = this.indexHandler.bind(this);
         this.addFilter = this.addFilter.bind(this);
         this.clearFilters = this.clearFilters.bind(this);
+        this.navbarClicked = this.navbarClicked.bind(this);
+    }
 
-        this.state = {
-          // value, operator, columnName
-          filters: [],
-          selectedFile: null,
-          selectedTimeDimensions: null
+    navbarClicked(name) {
+        let { selectedNavbarItem } = this.state;
+        switch(name) {
+            case 'upload':
+                this.props.history.push('/upload');
+                selectedNavbarItem = 'upload';
+                break;
+            case 'indexing':
+                if (this.state.selectedFile)
+                    this.props.history.push('/indexing');
+                selectedNavbarItem = 'indexing';
+                break;
+            case 'view':
+                if (this.state.selectedFile && this.state.selectedTimeDimensions) {
+                    this.props.history.push('/view')
+                    selectedNavbarItem = 'view';
+                }
+            break;
         }
+
+        if (selectedNavbarItem != this.state.selectedFile)
+            this.setState({selectedNavbarItem: selectedNavbarItem});
     }
 
     clearFilters() { this.setState({filters: []}); }
@@ -51,10 +77,10 @@ class App extends Component {
     }
 
     render() {
-        const { selectedFile, selectedTimeDimensions, filters } = this.state;
+        const { selectedFile, selectedTimeDimensions, filters, selectedNavbarItem } = this.state;
         return (
             <div className="page-container">
-                <Navbar />
+                <Navbar selectedNavbarItem={selectedNavbarItem} navbarClicked={this.navbarClicked}/>
                 <div className="page-content">
                     <Switch>
                         <Redirect exact from='/' to='/upload'/>
